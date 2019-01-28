@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-class Artist(models.Model):
+class Training(models.Model):
   name = models.CharField(default="", max_length=100)
   start_date = models.CharField(default="", max_length=100)
   end_date = models.CharField(default="", max_length=100)
