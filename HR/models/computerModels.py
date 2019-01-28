@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Computer(models.Model):
     purchaseDate = models.CharField(max_length=200),
     decommissionDate = models.CharField(max_length= 200),
