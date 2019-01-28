@@ -1,0 +1,8 @@
+<h1>D.E.M.S.</h1>
+<h2>~ Death Star Employee Management System ~</h2>
+
+{% block main_stuff %}
+  {% comment %} Including nav_bar in each template so we can pass the location to it each time {% endcomment %}
+  {% include "history/nav_bar.html" with nav_location=view.location %}
+  <img src="{% '../../../../images/death_star.jpg %}" alt="Death Star">
+{% endblock main_stuff %}
