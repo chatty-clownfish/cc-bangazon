@@ -6,4 +6,4 @@ class Department(models.Model):
   budget = models.IntegerField(default="", max_length=50)
 
   def __str__(self):
-    return self.name
+    return f"Name: {self.name}  Budget: {self.budget}"
