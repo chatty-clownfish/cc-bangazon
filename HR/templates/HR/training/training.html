@@ -1,0 +1,14 @@
+<h1>Trainings</h1>
+<form action="/HR/addTraining" method='get'>
+  <input type="submit" value="Add Training">
+</form>
+{% if training_list %}
+  <ul>
+  {% for training in training_list  %}
+    <li>{{ training.name }}</li>
+  </br>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No Trainings</p>  
+{% endif %}
