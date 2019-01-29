@@ -1,0 +1,13 @@
+<h1>Add a New Employee</h1>
+<form action="{% url 'HR:addemployee' %}" method='post'>
+  {% csrf_token %}
+  <input type="text" name="first_name">
+  <input type="text" name="last_name">
+  <input type="date" name="start_date">
+  <input type="text" name="is_supervisor">
+  <select name="department" id="employee_department">
+      {% for department in department_list %}
+      <option value="department">{{department.name}}</option>
+      {% endfor %}  </select>
+  <input type="submit" value="Save Employee">
+</form>
