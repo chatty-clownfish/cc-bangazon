@@ -1,0 +1,16 @@
+<h1>Departments</h1>
+{% if department_list %}
+  <ul>
+  {% for department in department_list  %}
+    <li>{{ department.name }} 
+    </br> 
+    Budget: {{ department.budget }}
+  </br>
+    Employees: ---
+  </li>
+  </br>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No Departments</p>  
+{% endif %}
