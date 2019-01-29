@@ -1,8 +1,13 @@
 from django.shortcuts import render
+from HR.models.employeeModels import Employee
+from HR.models.departmentModels import Department
+
 
 # Create your views here.
-def employeeList(request, employee_id):
-    Employee_list = Employee.objects.filter(employe_id = employee_id)
+def employeeList(request):
+    Department_list = Department.objects.all()
+    Employee_list = Employee.objects.all()
     print(Employee_list)
-    context = {'Employee_list' : Employee_list}
-    return render(request, 'HR/views/employeeList.html', context)
+    context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
+    return render(request, 'HR/employee/employee.html', context)
+

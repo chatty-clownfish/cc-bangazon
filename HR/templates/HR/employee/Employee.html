@@ -1,11 +1,18 @@
 <h1>Employees</h1>
-{% if employee_list %}
+{% if Employee_list %}
     <ul>
-    {% for song in song_list %}
-        <li>{{employee.first_name} {employee.last_name}}</li>
-    </br>
+    {% for employee in Employee_list %}
+        {% for department in Department_list %}
+            {% if employee.department_id == department.id %}
+                <li>{{employee.first_name}} {{employee.last_name}} <br> department : {{department.name}} <br> <input type= "button" value= "edit" onclick= alert() /></li>
+                </br>
+            {% endif %}
+        {% endfor %}
     {% endfor %}
     </ul>
-{% else %}
-    <p>No current Employees</p>
+    <form action="/HR/addemployee" method='get'>
+        <input type="submit" value="Add Employee">
+    </form>
+    {% else %}
+        <p>No current Employees</p>
 {% endif %}
