@@ -12,20 +12,25 @@ def addEmployee(request):
 
   if request.method == "GET":
   #render the form page
-    return render(request, 'HR/employee/addEmployee.html')
+    print("hello")
+
+    department_list = Department.objects.all()
+    print(department_list)
+    context = {"department_list" : department_list}
+
+    return render(request, 'HR/employee/addemployee.html', context)
 
   if request.method == "POST":
     first_name = request.POST["first_name"]
     last_name = request.POST["last_name"]
     start_date = request.POST["start_date"]
     is_supervisor = request.POST["is_supervisor"]
-    department = request.POST["department"]
+    department_id = request.POST["department_id"]
 
-    employee_list = Employee.objects.create(first_name=first_name, last_name=last_name, start_date=start_date, is_supervisor=is_supervisor)
-    
-    department_list = Department.objects.all()
-    context = {"department_list" : department_list, "employee_list" : employee_list}
+    employee_list = Employee.objects.create(first_name=first_name, last_name=last_name, start_date=start_date, is_supervisor=is_supervisor, department_id=department_id)
 
-    return render(request, 'HR/employee/addEmployee.html', context)
+    context = {"employee_list" : employee_list}
+
+    return render(request, 'HR/employee/employee.html', context)
       # return HttpResponse("Hi")
 
