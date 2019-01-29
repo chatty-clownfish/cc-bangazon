@@ -2,12 +2,7 @@
 {% if department_list %}
   <ul>
   {% for department in department_list  %}
-    <li>{{ department.name }} 
-    </br> 
-    Budget: {{ department.budget }}
-  </br>
-    Employees: ---
-  </li>
+    <li><a href="{% url 'HR:deptDetails' department.id %}">{{ department.name }}</a></li>
   </br>
     {% endfor %}
   </ul>
