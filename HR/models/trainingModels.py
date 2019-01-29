@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-
-
 class Training(models.Model):
   name = models.CharField(default="", max_length=100)
   start_date = models.DateField()
