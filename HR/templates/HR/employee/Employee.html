@@ -6,7 +6,7 @@
             {% if employee.department_id == department.id %}
                 <li>{{employee.first_name}} {{employee.last_name}}
                     <br> department : {{department.name}}
-                    <br> <input type= "button" value= "detail" onclick= alert() />
+                    <br> <a href="{% url 'HR:employeeDetail' employee.id %}">Employee Detail</a>
                 </li>
                 </br>
             {% endif %}

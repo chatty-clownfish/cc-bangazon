@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from HR.models.departmentModels import Department
 from HR.models.employeeModels import Employee
+from HR.models.employeeTrainingModels import EmployeeTraining
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
@@ -38,3 +39,9 @@ def employeeList(request):
     print(Employee_list)
     context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
     return render(request, 'HR/employee/employee.html', context)
+
+def employeedetails(request, id):
+    employee = get_object_or_404(Employee, pk= id)
+    # training = get_object_or_404(EmployeeTraining)
+    context = { 'employee' : employee }
+    return render(request, 'HR/employee/employeeDetail.html', context)
