@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from HR.models.departmentModels import Department
 from HR.models.employeeModels import Employee
 from django.http import HttpResponse, HttpResponseRedirect
@@ -25,12 +25,13 @@ def addEmployee(request):
     last_name = request.POST["last_name"]
     start_date = request.POST["start_date"]
     is_supervisor = request.POST["is_supervisor"]
-    department_id = request.POST["department_id"]
+    department_id = get_object_or_404(Department, pk=request.POST["department_id"])
 
-    employee_list = Employee.objects.create(first_name=first_name, last_name=last_name, start_date=start_date, is_supervisor=is_supervisor, department_id=department_id)
+    employee_list = Employee.objects.create(first_name=first_name, last_name=last_name, start_date=start_date, is_supervisor=is_supervisor, department_id=department_id.id)
 
-    context = {"employee_list" : employee_list}
+    department_list = Department.objects.all()
 
-    return render(request, 'HR/employee/employee.html', context)
-      # return HttpResponse("Hi")
+    context = {"employee_list" : employee_list, "department_list" : department_list}
+
+    return render(request, 'HR/employee/employees.html', context)
 
