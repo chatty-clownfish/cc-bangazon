@@ -18,6 +18,7 @@ def addEmployee(request):
 
   # if you're on the add employee page
   if request.method == "POST":
+    print("add employee post called")
     first_name = request.POST["first_name"]
     last_name = request.POST["last_name"]
     start_date = request.POST["start_date"]
