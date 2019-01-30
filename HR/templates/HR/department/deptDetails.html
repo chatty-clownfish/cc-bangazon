@@ -1,8 +1,17 @@
-<h1>{{ dept.name }}...</h1>
-
+<h1>{{ dept_details.name }} details...</h1>
 <ul>
   <li>Department Budget: 
-  </br>
-  {{ dept.budget }}</li>
+    <p>${{ dept_details.budget }}</p></li>
+    </br>
+    <li>Department Employees:
+      {% if employee.department_id == department.id %}
+      {% for employee in employees %}
+          <p>{{employee.first_name}} {{employee.last_name}}</p>
+      {% endfor %}
+
+    </li>
+        {% else %}
+        <p>There are no employees in this department</p>
+        {% endif %}
 </ul>
 
