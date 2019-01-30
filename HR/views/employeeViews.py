@@ -10,4 +10,3 @@ def employeeList(request):
     print(Employee_list)
     context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
     return render(request, 'HR/employee/employee.html', context)
-
