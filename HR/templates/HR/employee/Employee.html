@@ -4,7 +4,10 @@
     {% for employee in Employee_list %}
         {% for department in Department_list %}
             {% if employee.department_id == department.id %}
-                <li>{{employee.first_name}} {{employee.last_name}} <br> department : {{department.name}} <br> <input type= "button" value= "edit" onclick= alert() /></li>
+                <li>{{employee.first_name}} {{employee.last_name}}
+                    <br> department : {{department.name}}
+                    <br> <input type= "button" value= "detail" onclick= alert() />
+                </li>
                 </br>
             {% endif %}
         {% endfor %}
