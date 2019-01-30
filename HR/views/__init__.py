@@ -1,4 +1,5 @@
 from .index import index
+from .employeeViews import addEmployee
 
 from .departmentViews import departmentIndex
 from .departmentViews import details
