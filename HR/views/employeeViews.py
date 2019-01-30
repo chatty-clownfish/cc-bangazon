@@ -35,3 +35,12 @@ def addEmployee(request):
 
     return render(request, 'HR/employee/employees.html', context)
 
+
+# Create your views here.
+def employeeList(request):
+    Department_list = Department.objects.all()
+    Employee_list = Employee.objects.all()
+    print(Employee_list)
+    context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
+    return render(request, 'HR/employee/employee.html', context)
+

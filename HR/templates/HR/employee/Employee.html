@@ -1,0 +1,18 @@
+<h1>Employees</h1>
+{% if Employee_list %}
+    <ul>
+    {% for employee in Employee_list %}
+        {% for department in Department_list %}
+            {% if employee.department_id == department.id %}
+                <li>{{employee.first_name}} {{employee.last_name}} <br> department : {{department.name}} <br> <input type= "button" value= "edit" onclick= alert() /></li>
+                </br>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </ul>
+    <form action="/HR/addemployee" method='get'>
+        <input type="submit" value="Add Employee">
+    </form>
+    {% else %}
+        <p>No current Employees</p>
+{% endif %}
