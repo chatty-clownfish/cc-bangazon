@@ -6,9 +6,10 @@
   First Name: <input type="text" name="first_name" placeholder="First name"><br />
   Last Name: <input type="text" name="last_name" placeholder="Last name"><br />
   Start date: <input type="date" name="start_date"><br />
-  Supervisor Status:<br />
-  <input type="checkbox" name="is_supervisor" value=True>Yes<br>
-  <input type="checkbox" name="is_supervisor" value=False>No<br>
+  Supervisor Status:
+  <input type="radio" name="is_supervisor" value=1>Yes
+  <input type="radio" name="is_supervisor" checked="checked" value=0>No<br />
+
   Department: <select name="department_id" id="employee_department">
     {% for department in department_list %}
     <option value="{{department.id}}">{{department.name}}</option>

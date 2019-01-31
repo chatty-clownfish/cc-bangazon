@@ -1,6 +1,7 @@
 {% extends "../index.html"%}
 
 {% block content %}
+
 <h2>Edit Employee</h2>
 
 <form action="{% url 'HR:editedemployee' employee.id %}" method='post'>
@@ -9,11 +10,9 @@
   First Name: <input type="text" name="first_name" value="{{ first_name }}"><br />
   Last Name: <input type="text" name="last_name" value="{{ last_name }}"><br />
   Start date: <input type="date" name="start_date" value="{{ start_date }}"><br />
-  {%comment%}
-  supervisor is currently always running as true
-  {%endcomment%}
-  <input type="checkbox" name="is_supervisor" value=True>Yes<br>
-  <input type="checkbox" name="is_supervisor" value=False>No<br>
+  Supervisor Status:
+  <input type="radio" name="is_supervisor" value=1>Yes
+  <input type="radio" name="is_supervisor" checked="checked" value=0>No<br />
   Department: <select name="department_id" id="employee_department">
     {% for department in department_list %}
     <option value="{{department.id}}">{{department.name}}</option>
@@ -21,6 +20,5 @@
   </select><br /><br />
   <input type="submit" value="Save Employee">
 </form>
-
 
 {% endblock%}
