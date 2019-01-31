@@ -17,6 +17,8 @@ urlpatterns = [
   path('departments/', views.departmentIndex, name='departments'),
   # department details
   path('departments/<int:dept_id>/', views.dept_details, name='deptDetails'),
+  # add departments
+  path('addDept/', views.addDept, name='addDept'),
   path('training/', views.trainingList, name='trainings'),
   path('addTraining/', views.add_training_program, name='add'),
   path('training/<int:id>/', views.trainingDetails, name='trainingDetail'),
