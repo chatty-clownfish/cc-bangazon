@@ -1,3 +1,19 @@
-<div>
-    <h1>Add Training</h1>
+
+
+
+{% block main_stuff %}
+
+<h1>Add Training</h1>
+<h2>Please fill out form below</h2>
+<div id="main_container">
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" value="{{t.name}}" name="training_name" placeholder="training program name">
+        <input type="text" value="{{t.start_date}}" name="training_startDate" placeholder="start date: YYYY-MM-DD">
+        <input type="text" value="{{t.end_date}}" name="training_endDate" placeholder="end date: YYYY-MM-DD">
+        <input type="text" value="{{t.maxAttendees}}" name="training_maxEnrollment" placeholder="max attendees">
+        <input type="submit" value="Save Training">
+    </form>
 </div>
+
+{% endblock %}
