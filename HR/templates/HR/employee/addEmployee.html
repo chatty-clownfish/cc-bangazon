@@ -1,4 +1,6 @@
-<h1>Add a New Employee</h1>
+{% extends '../index.html' %}
+{%block content%}
+<h2>Add a New Employee</h2>
 <form action="{% url 'HR:addemployee' %}" method='post'>
   {% csrf_token %}
   First Name: <input type="text" name="first_name" placeholder="First name"><br />
@@ -14,3 +16,4 @@
   </select><br /><br />
   <input type="submit" value="Save Employee">
 </form>
+{%endblock%}
