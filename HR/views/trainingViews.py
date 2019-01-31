@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from HR.models import Training
-
+from HR.models import Training, EmployeeTraining
+from django.utils import timezone
 
 def trainingList(request):
-    training_list = Training.objects.all()
+    now = timezone.now()
+    training_list = Training.objects.filter(start_date__gte=now)
     context = {'training_list': training_list}
     return render(request, 'HR/training/training.html', context)
 
@@ -23,5 +24,6 @@ def add_training_program(request):
 
 def trainingDetails(request, id):
   training = get_object_or_404(Training, pk= id)
-  context = { 'training' : training }
+  employeetraining = EmployeeTraining.objects.filter(training_id = id)
+  context = { 'training' : training, 'employeetraining' : employeetraining}
   return render(request, 'HR/training/trainingDetail.html', context)
