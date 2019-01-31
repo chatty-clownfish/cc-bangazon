@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -18,8 +18,12 @@ def dept_details(request, dept_id):
   return render(request, 'HR/department/deptDetails.html', context)
 
 def addDept(request):
+  if request.method == "POST":
     name = request.POST['name']
-    budget = request.POST['budget']
-    department = Department(name=name, budget=budget)
-    department.save()
-    return HttpResponseRedirect(reverse('HR:departments'))
+    budget= request.POST['budget']
+    d = Department(name = name, budget = budget)
+    d.save()
+    response = redirect('HR:departments')
+    return response
+  if request.method == "GET":
+    return render(request, 'HR/department/addDept.html')

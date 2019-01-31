@@ -4,7 +4,7 @@
   <form action="{% url 'HR:addDept' %}" method="POST">
     {% csrf_token %}
     <input type="text" name="name" placeholder="Department Name" required=true>
-    <input type="text" name="budget" placeholder="Department Budget" required=true>
+    <input type="number" name="budget" placeholder="Department Budget" required=true>
     <input type="submit" value="Save Department">
   </form>
 </div>
