@@ -1,7 +1,9 @@
 <h1>{{ employee.first_name }} {{employee.last_name}}</h1>
 <ul>
-  <li>department: {department.name}</li>
-  <li>trainings: {training.name}</li>
+  <li>department: {{employee.department.name}}</li>
+  {% for trainings in employeetrainings %}
+  <li>trainings: {{trainings.training.name}}</li>
+  {% endfor %}
 </ul>
 <form action="/HR/employees" method='get'>
     <input type="submit" value="go back">

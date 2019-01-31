@@ -2,7 +2,7 @@ from .index import index
 from .employeeViews import addEmployee
 
 from .departmentViews import departmentIndex
-from .departmentViews import details
+from .departmentViews import dept_details
 
 from .employeeViews import employeeList
 from .employeeViews import employeedetails

@@ -42,6 +42,7 @@ def employeeList(request):
 
 def employeedetails(request, id):
     employee = get_object_or_404(Employee, pk= id)
-    # training = get_object_or_404(EmployeeTraining)
-    context = { 'employee' : employee }
+    employeetrainings = EmployeeTraining.objects.filter(employee_id= id)
+    context = { 'employee' : employee, 'employeetrainings' : employeetrainings }
     return render(request, 'HR/employee/employeeDetail.html', context)
+
