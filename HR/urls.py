@@ -13,6 +13,8 @@ urlpatterns = [
   path('addemployee/', views.addEmployee, name='addemployee'),
   # edit employee
   path('editemployee/<int:employee_id>/', views.editEmployee, name='editemployee'),
+  # route to edit employee
+  path('editedemployee/<int:employee_id>/', views.editEmployee, name='editedemployee'),
   # department index
   path('departments/', views.departmentIndex, name='departments'),
   # department details

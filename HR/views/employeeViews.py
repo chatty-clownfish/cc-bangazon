@@ -37,7 +37,6 @@ def editEmployee(request, employee_id):
   # if you're not currently on the add employee page
   if request.method == "GET":
     employee = Employee.objects.get(id=employee_id)
-  #   # get the departments so that names can display in the dropdown menu
     department_list = Department.objects.all()
     first_name = employee.first_name
     last_name = employee.last_name
@@ -48,18 +47,15 @@ def editEmployee(request, employee_id):
     context = {"employee" : employee, "department_list" : department_list, "first_name" : first_name, "last_name" : last_name, "start_date" : start_date, "is_supervisor" : is_supervisor, "department" : department}
     return render(request, 'HR/employee/editEmployee.html', context)
 
+  # if you're on the edit employee page
+  if request.method == "POST":
+    employee = Employee.objects.get(id=employee_id)
+    employee.first_name = request.POST["first_name"]
+    employee.last_name = request.POST["last_name"]
+    employee.start_date = request.POST["start_date"]
+    employee.is_supervisor = request.POST["is_supervisor"]
+    employee.department_id = get_object_or_404(Department, pk=request.POST["department_id"])
+    employee.save()
 
-  # if request.method == "PATCH":
-
-  #   employee = get_object_or_404(Employee, pk=employee_id)
-  #   first_name = employee.first_name
-  #   last_name = employee.last_name
-  #   department_id = Department.objects.filter(department_id=employee_id)
-
-
-  #   current_employee = Employee.objects.get()
-  #   department_list = Department.objects.all()
-  #   context = {"employee" : employee, "first_name" : first_name, "last_name" : last_name,  "department_id" : department_id, }
-  #   #render the form page
-  #   return render(request, 'HR/employee/editEmployee.html', context)
+    return HttpResponseRedirect(reverse('HR:employees'))
   

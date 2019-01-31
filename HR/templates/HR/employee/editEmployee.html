@@ -3,16 +3,20 @@
 {% block content %}
 <h2>Edit Employee</h2>
 
-<form action="{% url 'HR:addemployee' %}" method='post'>
+<form action="{% url 'HR:editedemployee' employee.id %}" method='post'>
 {% csrf_token %}
 
   First Name: <input type="text" name="first_name" value="{{ first_name }}"><br />
   Last Name: <input type="text" name="last_name" value="{{ last_name }}"><br />
   Start date: <input type="date" name="start_date" value="{{ start_date }}"><br />
-  <input type="checkbox" name="is_supervisor" value="{{ is_supervisor }}">Supervisor<br>
+  {%comment%}
+  supervisor is currently always running as true
+  {%endcomment%}
+  <input type="checkbox" name="is_supervisor" value=True>Yes<br>
+  <input type="checkbox" name="is_supervisor" value=False>No<br>
   Department: <select name="department_id" id="employee_department">
     {% for department in department_list %}
-    <option value="{{department}}">{{department}}</option>
+    <option value="{{department.id}}">{{department.name}}</option>
     {% endfor %}
   </select><br /><br />
   <input type="submit" value="Save Employee">
