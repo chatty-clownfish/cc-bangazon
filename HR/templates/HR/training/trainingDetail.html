@@ -6,4 +6,9 @@
     <p>Max Attendees: {{ training.maxAttendees }}</p>
 
     <h2>Employee Roster:</h2>
+    <ol>
+    {% for employee in employeetraining %}
+    <li>{{employee.employee.first_name}} {{employee.employee.last_name}}</li>
+    {% endfor %}
+    </ol>
 </div>
