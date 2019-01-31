@@ -24,20 +24,18 @@ class EmployeeDetailListTest(TestCase):
             end_date= "1993-3-4",
             maxAttendees= 1,
         )
-
-    def
-
         # Issue a GET request. "client" is a dummy web browser
         # 'reverse' is used to generate a URL for a given view. The main advantage is that you do not hard code routes in your code.
-        response = self.client.get(reverse('HR:employees'))
-
         # Check that the response is 200 OK.
         self.assertEqual(response.status_code, 200)
 
         # Check that the rendered context contains 1 artist.
         # Response.context is the context variable passed to the template by the view. This is incredibly useful for testing, because it allows us to confirm that our template is getting all the data it needs.
-        self.assertEqual(len(response.context['Employee_list']), 1)
         print(new_employee)
+        print(employeeTraining)
+        print(training)
+        self.assertEqual(training.maxAttendies, 1)
+
         # .encode converts from unicode to utf-8
         # example:
         # If the string is: pythön!

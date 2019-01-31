@@ -1,4 +1,6 @@
-<h1>Employees</h1>
+{% extends '../index.html'  %}
+{% block content %}
+<h2>Employees</h2>
 {% if Employee_list %}
     <ul>
     {% for employee in Employee_list %}
@@ -19,3 +21,4 @@
     {% else %}
         <p>No current Employees</p>
 {% endif %}
+{% endblock %}

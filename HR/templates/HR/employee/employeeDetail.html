@@ -1,10 +1,14 @@
-<h1>{{ employee.first_name }} {{employee.last_name}}</h1>
+{% extends '../index.html'  %}
+{% block content %}
+<h2>{{ employee.first_name }} {{employee.last_name}}</h2>
 <ul>
   <li>department: {{employee.department.name}}</li>
   {% for trainings in employeetraining %}
-  <li>trainings: {{tra  inings.training.name}}</li>
+  <li>trainings: {{trainings.training.name}}</li>
   {% endfor %}
 </ul>
+<a href="{% url 'HR:employeeDetail' employee.id %}">Edit</a>
 <form action="/HR/employees" method='get'>
     <input type="submit" value="go back">
 </form>
+{% endblock %}
