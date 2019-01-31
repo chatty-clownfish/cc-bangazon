@@ -3,6 +3,7 @@ from .employeeViews import addEmployee
 
 from .departmentViews import departmentIndex
 from .departmentViews import dept_details
+from .departmentViews import addDept
 
 from .employeeViews import employeeList
 from .employeeViews import employeedetails
