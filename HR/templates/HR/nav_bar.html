@@ -1,60 +1,22 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'HR/main.css' %}" />
+
 <nav>
-
-  {% if nav_location != 'home' %}
-    <form action="/HR/" method='get'>
-      <input type="submit" value="Home">
-    </form>
-  {% endif %}
-
-  {% if nav_location != 'employees' %}
-    <form action="/HR/employees" method='get'>
-      <input type="submit" value="Employees">
-    </form>
-  {% endif %}
-
-  {% if nav_location != 'departments' %}
-    <form action="/HR/departments" method='get'>
-      <input type="submit" value="View Departments">
-    </form>
-  {% endif %}
-
-  {% if nav_location != 'trainings' %}
-    <form action="/HR/songs/trainings" method='get'>
-      <input type="submit" value="Trainings">
-    </form>
-  {% endif %}
-
-  {% if nav_location != 'computers' %}
-    <form action="/HR/artists/computers" method='get'>
-      <input type="submit" value="Computers">
-    </form>
-  {% endif %}
-
-
+  <form action="/HR/" method='get'>
+    <input type="submit" value="Home">
+  </form>
+  <form action="/HR/employees" method='get'>
+    <input type="submit" value="Employees">
+  </form>
+  <form action="/HR/departments" method='get'>
+    <input type="submit" value="View Departments">
+  </form>
+  <form action="/HR/songs/trainings" method='get'>
+    <input type="submit" value="Trainings">
+  </form>
   {%comment%}
-
-  {% if nav_location != 'add_employee' %}
-    <form action="/HR/employees/add" method='get'>
-      <input type="submit" value="Add Employee">
-    </form>
-  {% endif %}
-
-  {% if nav_location != 'add_department' %}
-    <form action="/HR/departments/add" method='get'>
-      <input type="submit" value="Add Department">
-    </form>
-  {% endif %}
-
-  {% if nav_location != 'add_training' %}
-    <form action="/HR/trainings/add" method='get'>
-      <input type="submit" value="Add Training">
-    </form>
-  {% endif %}
-
-  {% if nav_location != 'add_computer' %}
-    <form action="/HR/computers/add" method='get'>
-      <input type="submit" value="Add Computer">
-    </form>
-  {% endif %}
-
+  <form action="/HR/artists/computers" method='get'>
+    <input type="submit" value="Computers">
+  </form>
   {%endcomment%}
+</nav>
