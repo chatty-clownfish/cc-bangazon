@@ -17,6 +17,4 @@ urlpatterns = [
   path('training/', views.trainingList, name='trainings'),
   path('addTraining/', views.add_training_program, name='add'),
   path('training/<int:id>/', views.trainingDetails, name='trainingDetail'),
-
-
 ]

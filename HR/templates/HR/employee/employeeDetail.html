@@ -1,8 +1,8 @@
 <h1>{{ employee.first_name }} {{employee.last_name}}</h1>
 <ul>
   <li>department: {{employee.department.name}}</li>
-  {% for trainings in employeetrainings %}
-  <li>trainings: {{trainings.training.name}}</li>
+  {% for trainings in employeetraining %}
+  <li>trainings: {{tra  inings.training.name}}</li>
   {% endfor %}
 </ul>
 <form action="/HR/employees" method='get'>
