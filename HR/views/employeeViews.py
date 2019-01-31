@@ -4,10 +4,14 @@ from HR.models.employeeModels import Employee
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-# Create your views here.
+def employeeList(request):
+    Department_list = Department.objects.all()
+    Employee_list = Employee.objects.all()
+    print(Employee_list)
+    context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
+    return render(request, 'HR/employee/employee.html', context)
 
 def addEmployee(request):
-
   # if you're not currently on the add employee page
   if request.method == "GET":  
     # get the departments so that names can display in the dropdown menu
@@ -29,10 +33,33 @@ def addEmployee(request):
     # reverse statement is telling urls.py which address to go to and which method to invoke
     return HttpResponseRedirect(reverse('HR:employees'))
 
-# Create your views here.
-def employeeList(request):
-    Department_list = Department.objects.all()
-    Employee_list = Employee.objects.all()
-    print(Employee_list)
-    context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
-    return render(request, 'HR/employee/employee.html', context)
+def editEmployee(request, employee_id):
+  # if you're not currently on the add employee page
+  if request.method == "GET":
+    employee = Employee.objects.get(id=employee_id)
+  #   # get the departments so that names can display in the dropdown menu
+    department_list = Department.objects.all()
+    first_name = employee.first_name
+    last_name = employee.last_name
+    start_date = str(employee.start_date)
+    is_supervisor = employee.is_supervisor
+    department = employee.department
+
+    context = {"employee" : employee, "department_list" : department_list, "first_name" : first_name, "last_name" : last_name, "start_date" : start_date, "is_supervisor" : is_supervisor, "department" : department}
+    return render(request, 'HR/employee/editEmployee.html', context)
+
+
+  # if request.method == "PATCH":
+
+  #   employee = get_object_or_404(Employee, pk=employee_id)
+  #   first_name = employee.first_name
+  #   last_name = employee.last_name
+  #   department_id = Department.objects.filter(department_id=employee_id)
+
+
+  #   current_employee = Employee.objects.get()
+  #   department_list = Department.objects.all()
+  #   context = {"employee" : employee, "first_name" : first_name, "last_name" : last_name,  "department_id" : department_id, }
+  #   #render the form page
+  #   return render(request, 'HR/employee/editEmployee.html', context)
+  
