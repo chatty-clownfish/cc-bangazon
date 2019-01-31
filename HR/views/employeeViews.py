@@ -12,7 +12,7 @@ from django.urls import reverse
 def addEmployee(request):
 
   if request.method == "GET":
-  #render the form page
+  
 
     department_list = Department.objects.all()
     print(department_list)
