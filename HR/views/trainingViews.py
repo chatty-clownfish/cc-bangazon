@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from HR.models import Training
 
 
@@ -20,4 +20,8 @@ def add_training_program(request):
         return response
     if request.method == "GET":
         return render(request, 'HR/training/addTraining.html')
-    
+
+def trainingDetails(request, id):
+  training = get_object_or_404(Training, pk= id)
+  context = { 'training' : training }
+  return render(request, 'HR/training/trainingDetail.html', context)

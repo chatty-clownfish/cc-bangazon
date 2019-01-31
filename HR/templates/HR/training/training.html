@@ -3,12 +3,12 @@
   <input type="submit" value="Add Training">
 </form>
 {% if training_list %}
-  <ul>
+  <ol>
   {% for training in training_list  %}
-    <li>{{ training.name }}</li>
+    <li><a href="{% url 'HR:trainingDetail' training.id %}">{{ training.name }}</a></li>
   </br>
     {% endfor %}
-  </ul>
+  </ol>
 {% else %}
   <p>No Trainings</p>  
 {% endif %}
