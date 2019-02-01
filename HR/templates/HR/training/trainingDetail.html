@@ -4,7 +4,7 @@
     <p>Start Date: {{ training.start_date }}</p>
     <p>End Date: {{ training.end_date }}</p>
     <p>Max Attendees: {{ training.maxAttendees }}</p>
-
+    <button> <a href="{% url 'HR:trainingDelete' training.id %}">Delete</a></button>
     <h2>Employee Roster:</h2>
     <ol>
     {% for employee in employeetraining %}
