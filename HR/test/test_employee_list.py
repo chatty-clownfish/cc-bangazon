@@ -3,23 +3,6 @@ from django.test import TestCase
 from django.urls import reverse
 from HR.models.employeeModels import Employee
 
-# Stuff to test
-# context: what we send to the template
-# content: the rendered html
-# response_codes
-
-# Name your tests like this! test_foo so Django can find and run 'em
-
-# * The test client is a Python class that acts as a dummy Web browser, allowing you to test your views and interact with your Django - powered application programmatically. Some of the things you can do with the test client are:
-#     * Simulate GET and POST requests on a URL and observe the response – everything from low - level HTTP(result headers and status codes) to page content.
-#     * See the chain of redirects(if any) and check the URL and status code at each step.
-#     * Test that a given request is rendered by a given Django template, with a template context that contains certain values.
-
-# *  Good rules-of-thumb include having:
-#     * a separate TestClass for each model or view
-#     * a separate test method for each set of conditions you want to test
-#     * test method names that describe their function
-
 class EmployeeListTest(TestCase):
 
     def test_list_employee(self):

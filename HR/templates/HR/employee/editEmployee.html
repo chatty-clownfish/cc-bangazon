@@ -7,9 +7,9 @@
 <form action="{% url 'HR:editemployee' employee.id %}" method='post'>
 {% csrf_token %}
 
-  First Name: <input type="text" name="first_name" value="{{ first_name }}"><br />
-  Last Name: <input type="text" name="last_name" value="{{ last_name }}"><br />
-  Start date: <input type="date" name="start_date" value="{{ start_date }}"><br />
+  First Name: <input type="text" name="first_name" value="{{ first_name }}" required=true><br />
+  Last Name: <input type="text" name="last_name" value="{{ last_name }}" required=true><br />
+  Start date: <input type="date" name="start_date" value="{{ start_date }}" required=true><br />
   Supervisor Status:
   <input type="radio" name="is_supervisor" value=1>Yes
   <input type="radio" name="is_supervisor" checked="checked" value=0>No<br />
