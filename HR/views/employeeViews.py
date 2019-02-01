@@ -5,10 +5,7 @@ from HR.models.employeeTrainingModels import EmployeeTraining
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-# Create your views here.
-
 def addEmployee(request):
-
   # if you're not currently on the add employee page
   if request.method == "GET":
     # get the departments so that names can display in the dropdown menu
@@ -30,6 +27,32 @@ def addEmployee(request):
     # reverse statement is telling urls.py which address to go to and which method to invoke
     return HttpResponseRedirect(reverse('HR:employees'))
 
+def editEmployee(request, employee_id):
+  # if you're not currently on the add employee page
+  if request.method == "GET":
+    employee = Employee.objects.get(id=employee_id)
+    department_list = Department.objects.all()
+    first_name = employee.first_name
+    last_name = employee.last_name
+    start_date = str(employee.start_date)
+    is_supervisor = employee.is_supervisor
+    department = employee.department
+
+    context = {"employee" : employee, "department_list" : department_list, "first_name" : first_name, "last_name" : last_name, "start_date" : start_date, "is_supervisor" : is_supervisor, "department" : department}
+    return render(request, 'HR/employee/editEmployee.html', context)
+
+  # if you're on the edit employee page
+  if request.method == "POST":
+    employee = Employee.objects.get(id=employee_id)
+    employee.first_name = request.POST["first_name"]
+    employee.last_name = request.POST["last_name"]
+    employee.start_date = request.POST["start_date"]
+    employee.is_supervisor = request.POST["is_supervisor"]
+    employee.department_id = get_object_or_404(Department, pk=request.POST["department_id"])
+    employee.save()
+
+    return HttpResponseRedirect(reverse('HR:employees'))
+  
 # Create your views here.
 def employeeList(request):
     #gets all the departments and puts them into a list

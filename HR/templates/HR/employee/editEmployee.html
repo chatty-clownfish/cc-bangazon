@@ -1,15 +1,18 @@
-{% extends '../index.html' %}
-{%block content%}
-<h2>Add a New Employee</h2>
-<form action="{% url 'HR:addemployee' %}" method='post'>
-  {% csrf_token %}
-  First Name: <input type="text" name="first_name" placeholder="First name"><br />
-  Last Name: <input type="text" name="last_name" placeholder="Last name"><br />
-  Start date: <input type="date" name="start_date"><br />
+{% extends "../index.html"%}
+
+{% block content %}
+
+<h2>Edit Employee</h2>
+
+<form action="{% url 'HR:editedemployee' employee.id %}" method='post'>
+{% csrf_token %}
+
+  First Name: <input type="text" name="first_name" value="{{ first_name }}"><br />
+  Last Name: <input type="text" name="last_name" value="{{ last_name }}"><br />
+  Start date: <input type="date" name="start_date" value="{{ start_date }}"><br />
   Supervisor Status:
   <input type="radio" name="is_supervisor" value=1>Yes
   <input type="radio" name="is_supervisor" checked="checked" value=0>No<br />
-
   Department: <select name="department_id" id="employee_department">
     {% for department in department_list %}
     <option value="{{department.id}}">{{department.name}}</option>
@@ -17,4 +20,5 @@
   </select><br /><br />
   <input type="submit" value="Save Employee">
 </form>
-{%endblock%}
+
+{% endblock%}
