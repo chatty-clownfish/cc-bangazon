@@ -25,8 +25,9 @@ urlpatterns = [
   path('employees/<int:id>/', views.employeedetails, name='employeeDetail'),
   path('training/', views.trainingList, name='trainings'),
   path('addTraining/', views.add_training_program, name='add'),
-  path('training/<int:id>/', views.trainingDetails, name='trainingDetail'),
-  path('editTraining/<int:id>/', views.edit_training_form, name='edit'),
+  path('training/<int:training_id>/', views.trainingDetails, name='trainingDetail'),
+  path('editTraining/<int:training_id>/', views.edit_training_form, name='edit'),
+  path('editedTraining/<int:training_id>/', views.editProgram, name='editedTraining'),
   path('trainingDelete/<int:id>/', views.training_delete, name='trainingDelete')
 
 ]

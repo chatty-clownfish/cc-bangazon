@@ -29,32 +29,59 @@ def add_training_program(request):
         return render(request, 'HR/training/addTraining.html')
 
 
-def trainingDetails(request, id):
-    training = get_object_or_404(Training, pk=id)
-    employeetraining = EmployeeTraining.objects.filter(training_id=id)
+def trainingDetails(request, training_id):
+    training = get_object_or_404(Training, pk=training_id)
+    employeetraining = EmployeeTraining.objects.filter(training_id=training_id)
     context = {'training': training, 'employeetraining': employeetraining}
     return render(request, 'HR/training/trainingDetail.html', context)
 
 
-def edit_training_form(request, id):
-    training = get_object_or_404(Training, pk=id)
+def edit_training_form(request, training_id):
+    # print("REQUEST: ", request.POST["training_name"])
+    training = get_object_or_404(Training, pk=training_id)
     start_date = str(training.start_date)
     startDateNonString = training.start_date
     end_date = str(training.end_date)
     print("training start date: ", training.start_date)
     print("training end date: ", training.end_date)
         # go to our join table filter through and find any rows where the ids match
-    attendees = EmployeeTraining.objects.filter(
-            training_id=id)
+    attendees = EmployeeTraining.objects.filter(training_id=training_id)
     td = timedelta(days=4)
 
-    if end_date <= start_date:
-        end_date = str(startDateNonString + td)
-        print("new end date: ", end_date)
-        context = {'training': training, 'attendees': attendees,
-                    'start_date': start_date, 'end_date': end_date}
-        print("context", context)
-        return render(request, 'HR/training/editTraining.html', context)
+    context = {'training': training, 'attendees': attendees, 'start_date': start_date, 'end_date': end_date}
+    return render(request, 'HR/training/editTraining.html', context)
+    # if end_date <= start_date:
+    #     end_date = str(startDateNonString + td)
+    #     print("new end date: ", end_date)
+    #     context = {'training': training, 'attendees': attendees,
+    #                 'start_date': start_date, 'end_date': end_date}
+    #     print("context", context)
+    #     return render(request, 'HR/training/editTraining.html', context)
+
+    # if request.method == "POST":
+    #     training = Training.objects.get(id=training_id)
+    #     print("TRAINING PROGRAM SELECTED: ", training)
+    #     training.name = request.POST["training_name"]
+    #     training.start_date = request.POST["training_startDate"]
+    #     training.end_date = request.POST["training_endDate"]
+    #     training.maxAttendees = request.POST["training_maxEnrollment"]
+    #     training.save()
+
+    #     return HttpResponseRedirect(reverse('HR:training'))
+
+def editProgram(request, training_id):
+        print("REQUEST: ", request)
+        print("TRAINING NAME: ", request.POST["training_name"])
+        training = Training.objects.get(id=training_id)
+        print("TRAINING PROGRAM SELECTED: ", training)
+        training.name = request.POST["training_name"]
+        training.start_date = request.POST["training_startDate"]
+        training.end_date = request.POST["training_endDate"]
+        training.maxAttendees = request.POST["training_maxEnrollment"]
+        training.save()
+
+        return HttpResponseRedirect(reverse('HR:trainingDetail', args=(training_id, )))
+
 
 def training_delete(self, id):
     print(id)
