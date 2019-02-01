@@ -1,0 +1,13 @@
+{% block content %}
+<h1>{{ training.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form method="POST">
+        {% csrf_token %}
+        <input type="text" value="{{training.name}}" name="training_name">
+        <input type="date" value="{{start_date}}" name="training_startDate">
+        <input type="date" value="{{end_date}}" name="training_endDate">
+        <input type="text" value="{{training.maxAttendees}}" name="training_maxEnrollment">
+        <input type="submit" value="Save Training">
+</form>
+{% endblock content %}
