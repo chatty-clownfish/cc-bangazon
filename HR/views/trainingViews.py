@@ -55,11 +55,6 @@ def edit_training_form(request, id):
                     'start_date': start_date, 'end_date': end_date}
         print("context", context)
         return render(request, 'HR/training/editTraining.html', context)
-        
-  training = get_object_or_404(Training, pk= id)
-  employeetraining = EmployeeTraining.objects.filter(training_id = id)
-  context = { 'training' : training, 'employeetraining' : employeetraining}
-  return render(request, 'HR/training/trainingDetail.html', context)
 
 def training_delete(self, id):
     print(id)
