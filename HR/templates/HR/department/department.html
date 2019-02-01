@@ -1,20 +1,32 @@
+{% extends '../index.html' %}
+{%block content%}
+
+<!-- Department List html template.  Maps through all the departments in the data base to display them on the page -->
+
 <h1>Departments</h1>
+<!-- checks to see if there is any information in the department list -->
 {% if department_list %}
   <ul>
+    <!-- loops over the department list -->
   {% for department in department_list  %}
+  <!-- All the listed departments are links that route to their detail page -->
     <li><a href="{% url 'HR:deptDetails' department.id %}">{{ department.name }}</a>
       <p>Department Budget: ${{ department.budget }}</p>
+      <!-- finds all the employees with the departments id and lists how many there are -->
       <p>Number of Employees: {{ department.employee_set.all|length}}</p>
     </li>
       </br>
   {% endfor %}
   </ul>
+  <!-- if no data exists will display a message saying there are no departments -->
 {% else %}
   <p>No Departments</p>  
 {% endif %}
 
+<!-- Add department button -->
 <div>
   <form action="/HR/addDept" method='get'>
     <input type="submit" value="Add Department">
   </form>
 </div>
+{%endblock%}
