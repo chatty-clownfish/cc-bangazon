@@ -6,9 +6,9 @@ from HR.models.departmentModels import Department
 
 class EmployeeEditTest(TestCase):
 
-  def test_get_employee_edit_form(self):
+  def test_employee_edit_geturl(self):
 
-    # create instances of department and employee
+    # create instance of employee to make a valid url arg
 
     new_dept = Department.objects.create(
       name="Department of Stuff",
@@ -27,3 +27,6 @@ class EmployeeEditTest(TestCase):
     response = self.client.get(reverse('HR:editemployee', args=(new_employee.id,)))
     print("EDITRESPONSE", response)
     self.assertEqual(response.status_code, 200)
+
+  
+  
