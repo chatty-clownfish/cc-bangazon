@@ -7,7 +7,7 @@
   <li>trainings: {{trainings.training.name}}</li>
   {% endfor %}
 </ul>
-<a href="{% url 'HR:employeeDetail' employee.id %}">Edit</a>
+<a href="{% url 'HR:editemployee' employee.id %}">Edit</a>
 <form action="/HR/employees" method='get'>
     <input type="submit" value="go back">
 </form>

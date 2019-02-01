@@ -1,17 +1,28 @@
+{% extends '../index.html' %}
+{%block content%}
+
+<!-- details page -->
+
+<!-- finds the name of the clicked on department and lists it in the title -->
 <h1>{{ dept_details.name }} details...</h1>
 <ul>
   <li>Department Budget: 
+    <!-- displays the specific departments budget -->
     <p>${{ dept_details.budget }}</p></li>
     </br>
     <li>Department Employees:
+      <!-- loops over the employees with a matching department id -->
       {% if employee.department_id == department.id %}
+      <!-- loops over those employees -->
       {% for employee in employees %}
+      <!-- list their first and last name -->
           <p>{{employee.first_name}} {{employee.last_name}}</p>
       {% endfor %}
-          
+          <!-- if no employees work in the department display this message -->
         </li>
         {% else %}
         <p>There are no employees in this department</p>
     {% endif %}
 </ul>
+{%endblock%}
 

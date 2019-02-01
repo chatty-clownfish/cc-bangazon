@@ -4,7 +4,7 @@
 
 <h2>Edit Employee</h2>
 
-<form action="{% url 'HR:editedemployee' employee.id %}" method='post'>
+<form action="{% url 'HR:editemployee' employee.id %}" method='post'>
 {% csrf_token %}
 
   First Name: <input type="text" name="first_name" value="{{ first_name }}"><br />

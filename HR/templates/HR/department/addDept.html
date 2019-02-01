@@ -1,10 +1,18 @@
+{% extends '../index.html' %}
+{%block content%}
+
+<!-- New Department form.  Both fields are required.  The budget field MUST be a number -->
+
 <h1>Add a New Department</h1>
 
 <div>
   <form action="{% url 'HR:addDept' %}" method="POST">
     {% csrf_token %}
+    <!-- must be filled out to continue -->
     <input type="text" name="name" placeholder="Department Name" required=true>
+    <!-- only takes numbers -->
     <input type="number" name="budget" placeholder="Department Budget" required=true>
     <input type="submit" value="Save Department">
   </form>
 </div>
+{%endblock%}
