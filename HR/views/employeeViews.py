@@ -51,7 +51,7 @@ def editEmployee(request, employee_id):
     employee.department_id = get_object_or_404(Department, pk=request.POST["department_id"])
     employee.save()
 
-    return HttpResponseRedirect(reverse('HR:employees'))
+    return HttpResponseRedirect(reverse('HR:employeeDetail', kwargs={'id' : employee.id}))
   
 # Create your views here.
 def employeeList(request):
