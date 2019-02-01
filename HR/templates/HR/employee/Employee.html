@@ -1,4 +1,6 @@
-<h1>Employees</h1>
+{% extends '../index.html'  %}
+{% block content %}
+<h2>Employees</h2>
 {% if Employee_list %}
     <ul>
     {% for employee in Employee_list %}
@@ -6,7 +8,7 @@
             {% if employee.department_id == department.id %}
                 <li>{{employee.first_name}} {{employee.last_name}}
                     <br> department : {{department.name}}
-                    <br> <input type= "button" value= "detail" onclick= alert() />
+                    <br> <a href="{% url 'HR:employeeDetail' employee.id %}">Employee Detail</a>
                 </li>
                 </br>
             {% endif %}
@@ -19,3 +21,4 @@
     {% else %}
         <p>No current Employees</p>
 {% endif %}
+{% endblock %}

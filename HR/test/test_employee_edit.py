@@ -28,5 +28,3 @@ class EmployeeEditTest(TestCase):
     print("EDITRESPONSE", response)
     self.assertEqual(response.status_code, 200)
 
-
-  

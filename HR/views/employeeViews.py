@@ -1,19 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from HR.models.departmentModels import Department
 from HR.models.employeeModels import Employee
+from HR.models.employeeTrainingModels import EmployeeTraining
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-def employeeList(request):
-    Department_list = Department.objects.all()
-    Employee_list = Employee.objects.all()
-    print(Employee_list)
-    context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
-    return render(request, 'HR/employee/employee.html', context)
-
 def addEmployee(request):
   # if you're not currently on the add employee page
-  if request.method == "GET":  
+  if request.method == "GET":
     # get the departments so that names can display in the dropdown menu
     department_list = Department.objects.all()
     context = {"department_list" : department_list}
@@ -59,3 +53,26 @@ def editEmployee(request, employee_id):
 
     return HttpResponseRedirect(reverse('HR:employees'))
   
+# Create your views here.
+def employeeList(request):
+    #gets all the departments and puts them into a list
+    Department_list = Department.objects.all()
+    # gets all employees and puts them into a list
+    Employee_list = Employee.objects.all()
+    print(Employee_list)
+    # creates a dictionary to pass departments and employees to the HTML template
+    context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
+    return render(request, 'HR/employee/employee.html', context)
+
+def employeedetails(request, id):
+    # gets an individual employee
+    employee = get_object_or_404(Employee, pk= id)
+    # gets all the trainings associated with that employee
+    employeetraining = EmployeeTraining.objects.filter(employee_id= id)
+    # creating a dictionary with all the employees and there trainings
+    context = { 'employee' : employee, 'employeetraining' : employeetraining }
+    print(context)
+    #sending everything to employee detail
+    return render(request, 'HR/employee/employeeDetail.html', context)
+
+
