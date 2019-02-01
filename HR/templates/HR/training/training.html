@@ -1,3 +1,5 @@
+{% extends '../index.html'  %}
+{% block content %}
 <h1>Trainings</h1>
 <form action="/HR/addTraining" method='get'>
   <input type="submit" value="Add Training">
@@ -12,3 +14,4 @@
 {% else %}
   <p>No Trainings</p>
 {% endif %}
+{% endblock %}

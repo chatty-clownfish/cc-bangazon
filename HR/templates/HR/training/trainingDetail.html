@@ -1,9 +1,12 @@
+{% extends '../index.html'  %}
+{% block content %}
 <h1>{{ training.name }}</h1>
 
 <div>
     <p>Start Date: {{ training.start_date }}</p>
     <p>End Date: {{ training.end_date }}</p>
     <p>Max Attendees: {{ training.maxAttendees }}</p>
+    <a href="{% url 'HR:edit' training.id %}">Edit this Training</a>
     <button> <a href="{% url 'HR:trainingDelete' training.id %}">Delete</a></button>
     <h2>Employee Roster:</h2>
     <ol>
@@ -12,3 +15,4 @@
     {% endfor %}
     </ol>
 </div>
+{% endblock %}
