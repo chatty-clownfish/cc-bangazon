@@ -49,7 +49,6 @@ class EmployeeEditTest(TestCase):
     form_return = 'First Name: <input type="text" name="first_name" value="Emmet" required=true><br />\n  Last Name: <input type="text" name="last_name" value="Ray" required=true><br />\n  Start date: <input type="date" name="start_date" value="2008-05-03" required=true><br />\n  Supervisor Status:\n  <input type="radio" name="is_supervisor" value=1>Yes\n  <input type="radio" name="is_supervisor" checked="checked" value=0>No<br />\n  Department: <select name="department_id" id="employee_department">\n    \n    <option value="1">Department of Stuff</option>\n    \n  </select><br /><br />\n  <input type="submit" value="Save Employee">\n</form>\n'.encode()
     self.assertIn(form_return, response.content)
 
-    # test that edited info is posting from the form back to the employee detail
 
   def test_post_edit_employee(self):
 
@@ -67,7 +66,8 @@ class EmployeeEditTest(TestCase):
       department_id= dept_of_things.id,
     )
 
+    # test for correct url redirect
+
     response = self.client.post(reverse('HR:editemployee', args=(new_employee.id, )), {'first_name': 'Bruce', 'last_name': 'Willis', 'start_date': '2010-05-05', 'is_supervisor': 1, "department_id": dept_of_things.id})
     # Getting 302 back because we have a success url and the view is redirecting
     self.assertEqual(response.status_code, 302)
-

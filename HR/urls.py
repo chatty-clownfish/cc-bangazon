@@ -13,8 +13,6 @@ urlpatterns = [
   path('addemployee/', views.addEmployee, name='addemployee'),
   # edit employee
   path('editemployee/<int:employee_id>/', views.editEmployee, name='editemployee'),
-  # route to edit employee
-  path('editedemployee/<int:employee_id>/', views.editEmployee, name='editedemployee'),
   # department index
   path('departments/', views.departmentIndex, name='departments'),
   # department details
@@ -23,11 +21,16 @@ urlpatterns = [
   path('addDept/', views.addDept, name='addDept'),
   #individual employees
   path('employees/<int:id>/', views.employeedetails, name='employeeDetail'),
+  # trainings list
   path('training/', views.trainingList, name='trainings'),
+  # add training
   path('addTraining/', views.add_training_program, name='add'),
+  # training detail
   path('training/<int:training_id>/', views.trainingDetails, name='trainingDetail'),
+  # edit a training
   path('editTraining/<int:training_id>/', views.edit_training_form, name='edit'),
   path('editedTraining/<int:training_id>/', views.editProgram, name='editedTraining'),
+  # delete a training
   path('trainingDelete/<int:id>/', views.training_delete, name='trainingDelete')
 
 ]
