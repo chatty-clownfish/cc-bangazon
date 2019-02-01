@@ -9,10 +9,10 @@
 <div id="main_container">
     <form method="POST">
         {% csrf_token %}
-        <input type="text" value="{{t.name}}" name="training_name" placeholder="training program name">
-        <input type="date" value="{{t.start_date}}" name="training_startDate" placeholder="start date: YYYY-MM-DD">
-        <input type="date" value="{{t.end_date}}" name="training_endDate" placeholder="end date: YYYY-MM-DD">
-        <input type="text" value="{{t.maxAttendees}}" name="training_maxEnrollment" placeholder="max attendees">
+        <input type="text" value="{{t.name}}" name="training_name" placeholder="training program name" required=true>
+        <input type="date" value="{{t.start_date}}" name="training_startDate" placeholder="start date: YYYY-MM-DD" required=true>
+        <input type="date" value="{{t.end_date}}" name="training_endDate" placeholder="end date: YYYY-MM-DD" required=true>
+        <input type="number" value="{{t.maxAttendees}}" name="training_maxEnrollment" placeholder="max attendees" required=true>
         <input type="submit" value="Save Training">
     </form>
 </div>

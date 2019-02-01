@@ -4,10 +4,10 @@
 
 <form action="{% url 'HR:editedTraining' training.id %}" method="POST">
         {% csrf_token %}
-        <input type="text" value="{{training.name}}" name="training_name">
-        <input type="date" value="{{start_date}}" name="training_startDate">
-        <input type="date" value="{{end_date}}" name="training_endDate">
-        <input type="number" value="{{training.maxAttendees}}" name="training_maxEnrollment" required="true">
+        <input type="text" value="{{training.name}}" name="training_name" required=true>
+        <input type="date" value="{{start_date}}" name="training_startDate" required=true>
+        <input type="date" value="{{end_date}}" name="training_endDate" required=true>
+        <input type="number" value="{{training.maxAttendees}}" name="training_maxEnrollment" required=true>
         <input type="submit" value="Save Training">
 </form>
 {% endblock content %}
