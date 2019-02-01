@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect, reverse
 from HR.models import Training, EmployeeTraining
 from django.utils import timezone
 
@@ -28,7 +28,9 @@ def trainingDetails(request, id):
   context = { 'training' : training, 'employeetraining' : employeetraining}
   return render(request, 'HR/training/trainingDetail.html', context)
 
-def delete_training_program(request):
-    training = EmployeeTraining.objects.get(id=request.POST['training_id'])
+def training_delete(self, id):
+    print(id)
+    training = get_object_or_404(Training, pk= id)
+    # print(training)
     training.delete()
-    return HttpResponseRedirect(reverse('HR:training'))
+    return HttpResponseRedirect(reverse("HR:trainings"))

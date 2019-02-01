@@ -32,17 +32,24 @@ def addEmployee(request):
 
 # Create your views here.
 def employeeList(request):
+    #gets all the departments and puts them into a list
     Department_list = Department.objects.all()
+    # gets all employees and puts them into a list
     Employee_list = Employee.objects.all()
     print(Employee_list)
+    # creates a dictionary to pass departments and employees to the HTML template
     context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
     return render(request, 'HR/employee/employee.html', context)
 
 def employeedetails(request, id):
+    # gets an individual employee
     employee = get_object_or_404(Employee, pk= id)
+    # gets all the trainings associated with that employee
     employeetraining = EmployeeTraining.objects.filter(employee_id= id)
+    # creating a dictionary with all the employees and there trainings
     context = { 'employee' : employee, 'employeetraining' : employeetraining }
     print(context)
+    #sending everything to employee detail
     return render(request, 'HR/employee/employeeDetail.html', context)
 
 
