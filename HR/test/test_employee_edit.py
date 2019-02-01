@@ -26,7 +26,7 @@ class EmployeeEditTest(TestCase):
     # test whether the get is directing to the correct url
     response = self.client.get(reverse('HR:editemployee', args=(new_employee.id,)))
     print("EDITRESPONSE", response)
-    self.assertEqual(response.status_code, 200)
+    self.assertEqual(response.status_code, 200
 
-  
+
   
