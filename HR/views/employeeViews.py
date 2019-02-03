@@ -60,8 +60,15 @@ def editEmployee(request, employee_id):
     employee.save()
     # use url name from urls plus id extension using kwargs and dictionary to assign employee.id
     return HttpResponseRedirect(reverse('HR:employeeDetail', kwargs={'id' : employee.id}))
-  
-# Create your views here.
+
+'''
+[Daniel Combs]
+
+Returns:
+    [Returns all employees] -- [This method gets all the employees
+    from the database and The departments and loads them into a dictionary
+     to pass to the employee HTML.]
+'''
 def employeeList(request):
     #gets all the departments and puts them into a list
     Department_list = Department.objects.all()
@@ -71,6 +78,15 @@ def employeeList(request):
     # creates a dictionary to pass departments and employees to the HTML template
     context ={'Employee_list' : Employee_list, 'Department_list': Department_list}
     return render(request, 'HR/employee/employee.html', context)
+
+'''
+Daniel Combs
+
+Returns:
+    [Python] -- [Retreieves employees with their spacific training programs.
+    This data is put into a dictionary then is sent to the HTML for the spacific employee.]
+'''
+
 
 def employeedetails(request, id):
     # gets an individual employee
